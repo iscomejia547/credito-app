@@ -5,6 +5,7 @@
  */
 package ui;
 
+import com.sun.glass.events.KeyEvent;
 import helpers.StaticHelpers;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +26,9 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,6 +71,11 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
                 formInternalFrameOpened(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -95,6 +104,15 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
         jPanel1.add(jLabel3, gridBagConstraints);
+
+        montotxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                montotxtKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                montotxtKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -103,6 +121,15 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         jPanel1.add(montotxt, gridBagConstraints);
+
+        cuotastxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cuotastxtKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cuotastxtKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -111,6 +138,15 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         jPanel1.add(cuotastxt, gridBagConstraints);
+
+        tasatxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tasatxtKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tasatxtKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
@@ -123,6 +159,11 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
         calcbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calcbtnActionPerformed(evt);
+            }
+        });
+        calcbtn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                calcbtnKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -164,19 +205,90 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void calcbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcbtnActionPerformed
-        if(montotxt.getText()==null || tasatxt.getText()==null || cuotastxt.getText()==null){
+        add();
+    }//GEN-LAST:event_calcbtnActionPerformed
+
+    private void calcbtnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_calcbtnKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_calcbtnKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            add();
+        }
+    }//GEN-LAST:event_formKeyPressed
+
+    private void montotxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_montotxtKeyTyped
+        if(Character.isLetter(evt.getKeyChar())){
+            evt.consume();
+            montotxt.setBorder(
+                    new javax.swing.border.LineBorder(
+                            new java.awt.Color(255, 0, 0),
+                            1, true));
+        }else{
+            montotxt.setBorder(
+                    new javax.swing.border.LineBorder(null));
+        }
+    }//GEN-LAST:event_montotxtKeyTyped
+
+    private void tasatxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasatxtKeyTyped
+        if(Character.isLetter(evt.getKeyChar())){
+            evt.consume();
+            tasatxt.setBorder(
+                    new javax.swing.border.LineBorder(
+                            new java.awt.Color(255, 0, 0),
+                            1, true));
+        }else{
+            tasatxt.setBorder(
+                    new javax.swing.border.LineBorder(null));
+        }
+    }//GEN-LAST:event_tasatxtKeyTyped
+
+    private void cuotastxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuotastxtKeyTyped
+        if(!Character.isDigit(evt.getKeyChar())){
+            evt.consume();
+            montotxt.setBorder(
+                    new javax.swing.border.LineBorder(
+                            new java.awt.Color(255, 0, 0),
+                            1, true));
+        }else{
+            montotxt.setBorder(
+                    new javax.swing.border.LineBorder(null));
+        }
+    }//GEN-LAST:event_cuotastxtKeyTyped
+
+    private void cuotastxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cuotastxtKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            add();
+        }
+    }//GEN-LAST:event_cuotastxtKeyPressed
+
+    private void montotxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_montotxtKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            add();
+        }
+    }//GEN-LAST:event_montotxtKeyPressed
+
+    private void tasatxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tasatxtKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            add();
+        }
+    }//GEN-LAST:event_tasatxtKeyPressed
+
+    private void add(){
+        if(montotxt.getText().isEmpty() || tasatxt.getText().isEmpty() || cuotastxt.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Rellene todos los campos necesarios", 
                     "", JOptionPane.WARNING_MESSAGE);
             return;
         }
+
         float capital=Float.parseFloat(montotxt.getText());
         float tasa=Float.parseFloat(tasatxt.getText())/100;
         int n=Integer.parseInt(cuotastxt.getText());
         Object[][] table=StaticHelpers.calc(capital, (tasa/12), n);//tasa convertida a mensual
         mod=new DefaultTableModel(table, headers);
         cTable.setModel(mod);
-    }//GEN-LAST:event_calcbtnActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable cTable;

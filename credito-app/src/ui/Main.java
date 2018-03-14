@@ -5,6 +5,7 @@
  */
 package ui;
 
+import helpers.StaticHelpers;
 import javax.swing.JFrame;
 
 /**
@@ -12,13 +13,14 @@ import javax.swing.JFrame;
  * @author Sistema30
  */
 public class Main extends javax.swing.JFrame {
-
+    private StaticHelpers stat;
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +35,6 @@ public class Main extends javax.swing.JFrame {
         mainmenu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cpropitem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Prestamos EXPRESS");
@@ -64,9 +65,6 @@ public class Main extends javax.swing.JFrame {
 
         mainmenu.add(jMenu1);
 
-        jMenu2.setText("Edit");
-        mainmenu.add(jMenu2);
-
         setJMenuBar(mainmenu);
 
         setSize(new java.awt.Dimension(416, 339));
@@ -90,7 +88,7 @@ public class Main extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Default".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -118,7 +116,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDesktopPane MainPane;
     private javax.swing.JMenuItem cpropitem;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar mainmenu;
     // End of variables declaration//GEN-END:variables
 }

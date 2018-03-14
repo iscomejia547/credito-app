@@ -12,6 +12,8 @@ package helpers;
  */
 public class StaticHelpers {
     
+    
+    
     public static Object[][] calc(float capital, float i, int n){
         Object[][] table=new Object[n+1][5];//n para el numero de meses, y 5 para n, amort, interes, cuota, capit.
         float cuota=(float)((capital)*(i)/(1-(Math.pow((1+i), -n))));//la cuota es fija
@@ -26,12 +28,12 @@ public class StaticHelpers {
             }else{
                 float I=(float)(capital*(Math.pow((1+i), 1)-1));//ya que se  constantemente, k siempre sera igual 1
                 table[k][0]=String.format("%d", k);
-                table[k][1]=String.format("%.2f", I);
+                table[k][1]=String.format("%.2f C$", I);
                 amortizable=cuota-I;
-                table[k][2]=String.format("%.2f", amortizable);
-                table[k][3]=String.format("%.2f", cuota);
+                table[k][2]=String.format("%.2f C$", amortizable);
+                table[k][3]=String.format("%.2f C$", cuota);
                 capital-=amortizable;
-                table[k][4]=String.format("%.2f", capital);
+                table[k][4]=String.format("%.2f C$", capital);
             }
         }
         return table;
