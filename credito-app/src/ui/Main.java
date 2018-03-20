@@ -18,6 +18,7 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     public Main() {
+        stat=new StaticHelpers("C$");
         initComponents();
     }
     
@@ -35,6 +36,8 @@ public class Main extends javax.swing.JFrame {
         mainmenu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cpropitem = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        Optionmn = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Prestamos EXPRESS");
@@ -48,7 +51,7 @@ public class Main extends javax.swing.JFrame {
         );
         MainPaneLayout.setVerticalGroup(
             MainPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 281, Short.MAX_VALUE)
         );
 
         getContentPane().add(MainPane, java.awt.BorderLayout.CENTER);
@@ -65,6 +68,18 @@ public class Main extends javax.swing.JFrame {
 
         mainmenu.add(jMenu1);
 
+        jMenu2.setText("Opciones");
+
+        Optionmn.setText("Unidad monetaria");
+        Optionmn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OptionmnActionPerformed(evt);
+            }
+        });
+        jMenu2.add(Optionmn);
+
+        mainmenu.add(jMenu2);
+
         setJMenuBar(mainmenu);
 
         setSize(new java.awt.Dimension(416, 339));
@@ -73,9 +88,16 @@ public class Main extends javax.swing.JFrame {
 
     private void cpropitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpropitemActionPerformed
         CreditoFrame credit=new CreditoFrame();
+        credit.setStat(stat);
         MainPane.add(credit,true);
         credit.setVisible(true);
     }//GEN-LAST:event_cpropitemActionPerformed
+
+    private void OptionmnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OptionmnActionPerformed
+        UnitDlg unit=new UnitDlg(this, true);
+        unit.setStat(stat);      
+        unit.setVisible(true);
+    }//GEN-LAST:event_OptionmnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,8 +136,10 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane MainPane;
+    private javax.swing.JMenuItem Optionmn;
     private javax.swing.JMenuItem cpropitem;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar mainmenu;
     // End of variables declaration//GEN-END:variables
 }

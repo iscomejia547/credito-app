@@ -11,10 +11,25 @@ package helpers;
  * @author Sistema30
  */
 public class StaticHelpers {
+    private String UNIT;
+
+    public StaticHelpers(String unit) {
+        this.UNIT=unit;
+    }
+    
+    
+
+    public void setUNIT(String UNIT) {
+        this.UNIT = UNIT;
+    }
+
+    public String getUNIT() {
+        return UNIT;
+    }
     
     
     
-    public static Object[][] calc(float capital, float i, int n){
+    public Object[][] calc(float capital, float i, int n){
         Object[][] table=new Object[n+1][5];//n para el numero de meses, y 5 para n, amort, interes, cuota, capit.
         float cuota=(float)((capital)*(i)/(1-(Math.pow((1+i), -n))));//la cuota es fija
         float amortizable=0;
@@ -28,12 +43,12 @@ public class StaticHelpers {
             }else{
                 float I=(float)(capital*(Math.pow((1+i), 1)-1));//ya que se  constantemente, k siempre sera igual 1
                 table[k][0]=String.format("%d", k);
-                table[k][1]=String.format("%.2f C$", I);
+                table[k][1]=String.format("%.2f "+UNIT, I);
                 amortizable=cuota-I;
-                table[k][2]=String.format("%.2f C$", amortizable);
-                table[k][3]=String.format("%.2f C$", cuota);
+                table[k][2]=String.format("%.2f "+UNIT, amortizable);
+                table[k][3]=String.format("%.2f "+UNIT, cuota);
                 capital-=amortizable;
-                table[k][4]=String.format("%.2f C$", capital);
+                table[k][4]=String.format("%.2f "+UNIT, capital);
             }
         }
         return table;

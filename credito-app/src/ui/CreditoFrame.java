@@ -18,6 +18,7 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
     
     private final Object[] headers={"N°", "Interés", "Amortizacion", "Cuota", "Saldo"};
     private DefaultTableModel mod;
+    private StaticHelpers stat;
 
     /**
      * Creates new form CreditoFrame
@@ -26,7 +27,11 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public void setStat(StaticHelpers stat) {
+        this.stat = stat;
+    }
 
+    
     
     
     /**
@@ -285,7 +290,7 @@ public class CreditoFrame extends javax.swing.JInternalFrame {
         float capital=Float.parseFloat(montotxt.getText());
         float tasa=Float.parseFloat(tasatxt.getText())/100;
         int n=Integer.parseInt(cuotastxt.getText());
-        Object[][] table=StaticHelpers.calc(capital, (tasa/12), n);//tasa convertida a mensual
+        Object[][] table=stat.calc(capital, (tasa/12), n);//tasa convertida a mensual
         mod=new DefaultTableModel(table, headers);
         cTable.setModel(mod);
     }
